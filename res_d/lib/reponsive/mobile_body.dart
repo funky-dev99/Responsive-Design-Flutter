@@ -10,39 +10,38 @@ class MyMobileBody extends StatelessWidget {
       appBar: AppBar(
         title: Text('M O B I L E'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
+      drawer: Drawer(
+        // Add a ListView to the drawer. This ensures the user can scroll
+        // through the options in the drawer if there isn't enough vertical
+        // space to fit everything.
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
           children: [
-            // youtube video
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Container(
-                  color: Colors.deepPurple[400],
-                ),
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
               ),
+              child: Text('Drawer Header'),
             ),
-
-            // comment section & recommended videos
-            Expanded(
-              child: ListView.builder(
-                itemCount: 8,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      color: Colors.deepPurple[300],
-                      height: 120,
-                    ),
-                  );
-                },
-              ),
-            )
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
           ],
         ),
-      ),
+      ) ,
+
     );
   }
 }
